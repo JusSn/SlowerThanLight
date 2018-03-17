@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackCamera : MonoBehaviour {
 	public GameObject ShipObject;
 	public float CameraOffsetMax;
-	private float offset = 0; 
+	private float offset = -1; 
 	private float t_ = 0.0f;
 
 	// Use this for initialization
@@ -26,7 +26,7 @@ public class AttackCamera : MonoBehaviour {
 
 	IEnumerator LerpCameraOffset() {
 		while (offset < CameraOffsetMax) {
-			offset = Mathf.Lerp(0, CameraOffsetMax, t_);
+			offset = Mathf.Lerp(-1, CameraOffsetMax, t_);
 			t_ += 0.3f * Time.deltaTime;
 			yield return null;
 		}

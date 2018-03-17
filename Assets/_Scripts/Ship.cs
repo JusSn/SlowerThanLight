@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 	/* MOTION */
-	protected enum State { LEFT, CENTER, RIGHT, MOVING }
-	private State state_;
-	private State destination_;
+	public enum State { LEFT, CENTER, RIGHT, MOVING }
+	public State state_ = State.CENTER;
+	public State destination_;
 	public KeyCode LeftKey;
 	public KeyCode RightKey;
 	
@@ -29,21 +29,35 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// TODO: Input L/R checking 
 		/* Movement state machine */
 		switch (state_) {
 			case State.LEFT:
-				if (Input.GetKeyDown(RightKey)) { Move(State.CENTER); }
+				if (Input.GetKeyDown(RightKey)) { 
+					destination_ = State.CENTER;
+					Move(GameData.kCenterLaneX); 
+				}
 				break;
 			case State.CENTER:
-				if (Input.GetKeyDown(RightKey)) { }
-			break;
+				if (Input.GetKeyDown(RightKey)) { 
+					destination_ = State.RIGHT;
+					Move(GameData.kRightLaneX); 
+				}
+				if (Input.GetKeyDown(LeftKey)) { 
+					destination_ = State.LEFT;
+					Move(GameData.kLeftLaneX); 
+				}
+				break;
 			case State.RIGHT:
-			break;
+				if (Input.GetKeyDown(LeftKey)) { 
+					destination_ = State.CENTER;
+					Move(GameData.kCenterLaneX); 
+				}
+				break;
 			case State.MOVING:
-			break;
+				CommandWhileMoving();
+				break;
 			default:
-			break;
+				break;
 		}
 
 		/* Firing code */
@@ -70,9 +84,10 @@ public class Ship : MonoBehaviour {
 		exhaust_.enabled = true;
 	}
 
-	// Move ship to target state. AttackShip overrides this to implement delay and queue
-	virtual protected void Move(State destination) {
-
+	// Move ship to target lane denoted by lane_x. AttackShip overrides this to implement delay and queue
+	virtual protected void Move(float lane_x) {
+		state_ = State.MOVING;
+		StartCoroutine(MoveAnimation(new Vector3(lane_x, transform.position.y, transform.position.z)));
 	}
 
 	// Fat interface for input behavior when state is MOVING
@@ -81,4 +96,18 @@ public class Ship : MonoBehaviour {
 	// Protected accessors
 	protected State GetState() { return state_; }
 	protected State GetDest() { return destination_; }
+
+	// Coroutines
+	IEnumerator MoveAnimation(Vector3 dest_vector) {
+		var orig_pos = transform.position;
+		float t = 0.0f;
+		while (transform.position != dest_vector) {
+			Debug.Log(t);
+			transform.position = Vector3.Lerp(orig_pos, dest_vector, t);
+			t += Time.deltaTime;
+			yield return null;
+		}
+		// Done moving
+		state_ = destination_;
+	}
 }

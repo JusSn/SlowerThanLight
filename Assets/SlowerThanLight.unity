@@ -324,7 +324,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1045499827
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5c5d6f5b8c3806a42a4779aa80296cdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShipObject: {fileID: 1548198817}
-  CameraOffsetMax: 4
+  CameraOffsetMax: 5
 --- !u!124 &1353871453
 Behaviour:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1353871451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -569,6 +569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563bd11a59568fd4ca890dcef279a73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state_: 1
+  destination_: 0
+  LeftKey: 97
+  RightKey: 100
   power: 1
   range: 7
   maxCooldown: 0.5
@@ -705,6 +709,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b4d704b573bc54aacc84e9d58dbfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state_: 1
+  destination_: 0
+  LeftKey: 276
+  RightKey: 275
   power: 1
   range: 9
   maxCooldown: 0.5
@@ -794,7 +802,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -192650837
-  m_SortingLayer: 1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b9dd3c839ada5794e9f08201278d3303, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

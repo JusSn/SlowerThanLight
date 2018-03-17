@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackShip : Ship {
+	/* MOTION */
+	
+	/* EFFECTS */
 	public float GameplayPosition;
 	private float StartPosition_;
 	private float t_ = 0.0f;
@@ -14,7 +17,7 @@ public class AttackShip : Ship {
 	}
 	
 	// Move AttackShip to gameplay position
-	IEnumerator Embark() {
+	private IEnumerator Embark() {
 		// Fire Engines
 	 	EngineOn();
 		while (transform.position.y < GameplayPosition) {
@@ -27,7 +30,7 @@ public class AttackShip : Ship {
 		UpdateYPosition(GameplayPosition);
 	}
 	
-	void UpdateYPosition(float y) {
+	private void UpdateYPosition(float y) {
 		transform.position = new Vector3(transform.position.x, y, transform.position.z);
 	}
 }
