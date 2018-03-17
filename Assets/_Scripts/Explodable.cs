@@ -24,7 +24,13 @@ public class Explodable : MonoBehaviour {
 			Explode(); 
 		}
 		else {
-			TakeDamage(other.gameObject.GetComponent<Explodable>().damage);
+			var explodable = other.gameObject.GetComponent<Explodable>();
+			if (explodable) { 
+				TakeDamage(explodable.damage); 
+			}
+			else { 
+				TakeDamage(1);
+			}
 		}
 	}
 
@@ -34,7 +40,7 @@ public class Explodable : MonoBehaviour {
 	}
 
 	void Explode() {
-		var death_explosion = Instantiate(explosion, transform.position, Quaternion.identity);
-		Destroy(this);
+		Instantiate(explosion, transform.position, Quaternion.identity);
+		Destroy(this.gameObject);
 	}
 }

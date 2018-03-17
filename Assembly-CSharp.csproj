@@ -54,6 +54,7 @@
      <Compile Include="Assets\_Scripts\AttackCamera.cs" />
      <Compile Include="Assets\_Scripts\AttackShip.cs" />
      <Compile Include="Assets\_Scripts\Explodable.cs" />
+     <Compile Include="Assets\_Scripts\Exploder.cs" />
      <Compile Include="Assets\_Scripts\Meteor.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
