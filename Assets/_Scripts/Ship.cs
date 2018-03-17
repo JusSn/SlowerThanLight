@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 	/* MOTION */
-	protected enum State { LEFT, CENTER, RIGHT, MOVING }
+	protected enum State { LEFT, CENTER, RIGHT, MOVING, PAUSED }
 	[SerializeField]
 	private State state_ = State.CENTER;
 	[SerializeField]
@@ -36,6 +36,7 @@ public class Ship : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		/* Movement state machine */
+		if (state_ == State.PAUSED) { return; }
 		if (Input.GetKeyDown(LeftKey)) { AddCommand(State.LEFT); }
 		if (Input.GetKeyDown(CenterKey)) { AddCommand(State.CENTER); }
 		if (Input.GetKeyDown(RightKey)) { AddCommand(State.RIGHT); }
@@ -117,8 +118,6 @@ public class Ship : MonoBehaviour {
 	virtual protected int GetLaserDamage() { return 1; }
 
 	// Protected accessors
-	protected State GetState() { return state_; }
 	protected void SetState(State s) { state_ = s; }
-	protected Vector3 GetDest() { return destPos_; }
 	protected SpriteRenderer GetExhaustRenderer() { return exhaust_; }
 }

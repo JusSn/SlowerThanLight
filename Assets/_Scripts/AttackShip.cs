@@ -30,7 +30,7 @@ public class AttackShip : Ship {
 	// Move AttackShip to gameplay position
 	IEnumerator Embark() {
 		// Prevent input
-		SetState(State.MOVING);
+		SetState(State.PAUSED);
 		// Fire Engines
 	 	EngineOn();
 		float t = 0f;
