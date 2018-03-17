@@ -24,6 +24,8 @@ public class AttackShip : Ship {
 	
 	// Move AttackShip to gameplay position
 	IEnumerator Embark() {
+		// Prevent input
+		SetState(State.MOVING);
 		// Fire Engines
 	 	EngineOn();
 		float t = 0f;
@@ -35,6 +37,9 @@ public class AttackShip : Ship {
 			yield return null;
 		}
 		UpdateYPosition(gameplayPosition);
+		// Enable controls and start level counter
+		SetState(State.CENTER);
+		Manager.instance.enabled = true;
 	}
 	
 	void UpdateYPosition(float y) {

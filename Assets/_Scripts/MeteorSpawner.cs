@@ -14,7 +14,7 @@ public class MeteorSpawner : MonoBehaviour {
 		timeSinceLastSpawn_ += Time.deltaTime;
 		if (timeSinceLastSpawn_ > spawnRate) {
 			timeSinceLastSpawn_ = 0;
-			Instantiate(meteors[Manager.instance.level], transform.position, Quaternion.identity);
+			Instantiate(meteors[Manager.instance.level], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
 		}
 	}
 }

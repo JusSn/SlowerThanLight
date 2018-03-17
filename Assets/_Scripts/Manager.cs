@@ -13,11 +13,12 @@ public class Manager : MonoBehaviour {
 	// current game level dictates meteor spawn types and attack ship power
 	public int level = 0;
 	private float timeSinceLevel = 0;
-	private float kTimeBetweenLevels = 5;
+	private float kTimeBetweenLevels = 15;
 
 	// Use this for initialization
 	void Start () {
 		instance = this;
+		enabled = false;
 	}
 	
 	// Update is called once per frame

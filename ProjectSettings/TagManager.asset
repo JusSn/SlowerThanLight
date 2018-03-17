@@ -49,6 +49,9 @@ TagManager:
   - name: AwayPlanet
     uniqueID: 4102316459
     locked: 0
+  - name: Meteor
+    uniqueID: 600956955
+    locked: 0
   - name: Missile
     uniqueID: 1866821809
     locked: 0
