@@ -114,7 +114,7 @@ public class Ship : MonoBehaviour {
 		float t = 0.0f;
 		while (transform.position != dest_vector) {
 			transform.position = Vector3.Lerp(orig_pos, dest_vector, t);
-			t += Time.deltaTime;
+			t += 2 * Time.deltaTime;
 			yield return null;
 		}
 		// Done moving
