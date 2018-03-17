@@ -6,21 +6,41 @@ public class Ship : MonoBehaviour {
 	// ships fire on enemies in their lane
 	public int power;
 	public int range;
-	private SpriteRenderer Exhaust_;
+	public float maxCooldown;
+	private float currentCooldown_ = 0;
+	public GameObject laser;
+	private SpriteRenderer exhaust_;
+	
+	public LayerMask enemyMask;
+	private bool onCooldown = false;
 
 	// Use this for initialization
 	virtual protected void Start () {
-		Exhaust_ = transform.Find("ExhaustSprite").GetComponent<SpriteRenderer>();
-		Exhaust_.enabled = false;
+		exhaust_ = transform.Find("ExhaustSprite").GetComponent<SpriteRenderer>();
+		exhaust_.enabled = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (onCooldown) {
+			currentCooldown_ += Time.deltaTime;
+			if (currentCooldown_ >= maxCooldown) {
+				onCooldown = false;
+			}
+			return;
+		}
+		// Check for target in range
+		var scan_hit = Physics2D.Raycast(transform.position, Vector2.up, range, enemyMask);
+		if (scan_hit.collider != null) {
+			// var laserShot = Instantiate(laser, transform.position, Quaternion.identity);
+			// laserShot.transform.localScale = new Vector3(power, power, 1);
+			onCooldown = true;
+			currentCooldown_ = 0;
+		}
 	}
 
 	protected void EngineOn() {
-		if (!Exhaust_) { Exhaust_ = transform.Find("ExhaustSprite").GetComponent<SpriteRenderer>(); }
-		Exhaust_.enabled = true;
+		if (!exhaust_) { exhaust_ = transform.Find("ExhaustSprite").GetComponent<SpriteRenderer>(); }
+		exhaust_.enabled = true;
 	}
 }

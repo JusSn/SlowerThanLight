@@ -13,9 +13,6 @@ public class AttackShip : Ship {
 		StartCoroutine(Embark());
 	}
 	
-	// Update is called once per frame
-	void Update () {}
-
 	// Move AttackShip to gameplay position
 	IEnumerator Embark() {
 		// Fire Engines
