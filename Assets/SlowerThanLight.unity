@@ -849,7 +849,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meteors:
   - {fileID: 1528727818671764, guid: 27878d3140cf15b4194a5ae02fba822a, type: 2}
-  spawnRate: 1
+  - {fileID: 1720244171100352, guid: d8cb1c10f174cd448aeb1888d677cfd0, type: 2}
+  - {fileID: 1054332208193360, guid: 2c0715f578c5faf4687382377a6f2cf9, type: 2}
+  - {fileID: 1392774278191030, guid: bfb7cf1e79a274347819709654ceead2, type: 2}
+  spawnRate: 1.5
 --- !u!1 &2110856774
 GameObject:
   m_ObjectHideFlags: 0

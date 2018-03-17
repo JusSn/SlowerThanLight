@@ -23,10 +23,12 @@ public class Manager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Level up every few seconds
-		timeSinceLevel += Time.deltaTime;
-		if (timeSinceLevel > kTimeBetweenLevels) {
-			timeSinceLevel = 0;
-			++level;
+		if (level < 3) {
+			timeSinceLevel += Time.deltaTime;
+			if (timeSinceLevel > kTimeBetweenLevels) {
+				timeSinceLevel = 0;
+				++level;
+			}
 		}
 	}
 }
