@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 	/* MOTION */
-	public enum State { LEFT, CENTER, RIGHT, MOVING }
-	public State state_ = State.CENTER;
-	public State destination_;
+	protected enum State { LEFT, CENTER, RIGHT, MOVING }
+	private State state_ = State.CENTER;
+	private State destination_;
 	public KeyCode LeftKey;
 	public KeyCode RightKey;
 	
@@ -83,19 +83,26 @@ public class Ship : MonoBehaviour {
 		if (!exhaust_) { exhaust_ = transform.Find("ExhaustSprite").GetComponent<SpriteRenderer>(); }
 		exhaust_.enabled = true;
 	}
+	void EngineOff() { exhaust_.enabled = false; }
 
 	// Move ship to target lane denoted by lane_x. AttackShip overrides this to implement delay and queue
 	virtual protected void Move(float lane_x) {
 		state_ = State.MOVING;
+		IncreaseThrust();
 		StartCoroutine(MoveAnimation(new Vector3(lane_x, transform.position.y, transform.position.z)));
 	}
 
 	// Fat interface for input behavior when state is MOVING
 	virtual protected void CommandWhileMoving() {}
+	// Turn up thrust when moving
+	virtual protected void IncreaseThrust() { EngineOn(); }
+	// Turn down thrust when stopped
+	virtual protected void DecreaseThrust() { EngineOff(); }
 
 	// Protected accessors
 	protected State GetState() { return state_; }
 	protected State GetDest() { return destination_; }
+	protected SpriteRenderer GetExhaustRenderer() { return exhaust_; }
 
 	// Coroutines
 	IEnumerator MoveAnimation(Vector3 dest_vector) {
@@ -109,5 +116,6 @@ public class Ship : MonoBehaviour {
 		}
 		// Done moving
 		state_ = destination_;
+		DecreaseThrust();
 	}
 }
