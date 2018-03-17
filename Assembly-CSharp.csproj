@@ -55,8 +55,8 @@
      <Compile Include="Assets\_Scripts\AttackShip.cs" />
      <Compile Include="Assets\_Scripts\Explodable.cs" />
      <Compile Include="Assets\_Scripts\Exploder.cs" />
-     <Compile Include="Assets\_Scripts\GameData.cs" />
      <Compile Include="Assets\_Scripts\Laser.cs" />
+     <Compile Include="Assets\_Scripts\Manager.cs" />
      <Compile Include="Assets\_Scripts\Meteor.cs" />
      <Compile Include="Assets\_Scripts\MeteorSpawner.cs" />
      <Compile Include="Assets\_Scripts\Ship.cs" />

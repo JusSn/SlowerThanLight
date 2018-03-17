@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MeteorSpawner : MonoBehaviour {
 	public GameObject[] meteors;
-	public int level = 0;
 	public float spawnRate = 4;
 	private float timeSinceLastSpawn_ = 0;
 	// Use this for initialization
@@ -15,7 +14,7 @@ public class MeteorSpawner : MonoBehaviour {
 		timeSinceLastSpawn_ += Time.deltaTime;
 		if (timeSinceLastSpawn_ > spawnRate) {
 			timeSinceLastSpawn_ = 0;
-			Instantiate(meteors[level], transform.position, Quaternion.identity);
+			Instantiate(meteors[Manager.instance.level], transform.position, Quaternion.identity);
 		}
 	}
 }

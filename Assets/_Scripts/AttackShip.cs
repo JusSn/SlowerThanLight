@@ -19,9 +19,11 @@ public class AttackShip : Ship {
 	// Attack ship alters exhaust size rather than turning it on/off
 	override protected void IncreaseThrust() { base.GetExhaustRenderer().transform.localScale *= kExhaustScale_; }
 	override protected void DecreaseThrust() { base.GetExhaustRenderer().transform.localScale /= kExhaustScale_;}
+	// Attack ship laser increases damage with level
+	override protected int GetLaserDamage() { return Manager.instance.level + 1; }
 	
 	// Move AttackShip to gameplay position
-	private IEnumerator Embark() {
+	IEnumerator Embark() {
 		// Fire Engines
 	 	EngineOn();
 		float t = 0f;
@@ -35,7 +37,7 @@ public class AttackShip : Ship {
 		UpdateYPosition(gameplayPosition);
 	}
 	
-	private void UpdateYPosition(float y) {
+	void UpdateYPosition(float y) {
 		transform.position = new Vector3(transform.position.x, y, transform.position.z);
 	}
 }

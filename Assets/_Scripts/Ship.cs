@@ -11,13 +11,13 @@ public class Ship : MonoBehaviour {
 	public KeyCode RightKey;
 	
 	/* FIRING */
-	public int power;
 	public int range;
 	public float maxCooldown;
 	public GameObject laser;
 	public LayerMask enemyMask;
-	private bool onCooldown = false;
+	private bool onCooldown_ = false;
 	private float currentCooldown_ = 0;
+
 	/* EFFECTS */
 	private SpriteRenderer exhaust_;
 
@@ -34,23 +34,23 @@ public class Ship : MonoBehaviour {
 			case State.LEFT:
 				if (Input.GetKeyDown(RightKey)) { 
 					destination_ = State.CENTER;
-					Move(GameData.kCenterLaneX); 
+					Move(Manager.kCenterLaneX); 
 				}
 				break;
 			case State.CENTER:
 				if (Input.GetKeyDown(RightKey)) { 
 					destination_ = State.RIGHT;
-					Move(GameData.kRightLaneX); 
+					Move(Manager.kRightLaneX); 
 				}
 				if (Input.GetKeyDown(LeftKey)) { 
 					destination_ = State.LEFT;
-					Move(GameData.kLeftLaneX); 
+					Move(Manager.kLeftLaneX); 
 				}
 				break;
 			case State.RIGHT:
 				if (Input.GetKeyDown(LeftKey)) { 
 					destination_ = State.CENTER;
-					Move(GameData.kCenterLaneX); 
+					Move(Manager.kCenterLaneX); 
 				}
 				break;
 			case State.MOVING:
@@ -61,19 +61,20 @@ public class Ship : MonoBehaviour {
 		}
 
 		/* Firing code */
-		if (onCooldown) {
+		if (onCooldown_) {
 			currentCooldown_ += Time.deltaTime;
 			if (currentCooldown_ >= maxCooldown) {
-				onCooldown = false;
+				onCooldown_ = false;
 			}
 			return;
 		}
 		// Check for target in range
 		var scan_hit = Physics2D.Raycast(transform.position, Vector2.up, range, enemyMask);
 		if (scan_hit.collider != null) {
-			var laserShot = Instantiate(laser, transform.position, Quaternion.identity);
-			laserShot.transform.localScale *= power;
-			onCooldown = true;
+			var laser_shot = Instantiate(laser, transform.position, Quaternion.identity);
+			laser_shot.GetComponent<Explodable>().damage = GetLaserDamage();
+			laser_shot.transform.localScale *= GetLaserDamage();
+			onCooldown_ = true;
 			currentCooldown_ = 0;
 		}
 	}
@@ -98,6 +99,8 @@ public class Ship : MonoBehaviour {
 	virtual protected void IncreaseThrust() { EngineOn(); }
 	// Turn down thrust when stopped
 	virtual protected void DecreaseThrust() { EngineOff(); }
+	// Laser power for this ship depends on type
+	virtual protected int GetLaserDamage() { return 1; }
 
 	// Protected accessors
 	protected State GetState() { return state_; }
@@ -109,7 +112,6 @@ public class Ship : MonoBehaviour {
 		var orig_pos = transform.position;
 		float t = 0.0f;
 		while (transform.position != dest_vector) {
-			Debug.Log(t);
 			transform.position = Vector3.Lerp(orig_pos, dest_vector, t);
 			t += Time.deltaTime;
 			yield return null;
