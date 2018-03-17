@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackCamera : MonoBehaviour {
-
-	public GameObject ship_object_;
-	public float camera_offset_;
+	public GameObject ShipObject;
+	public float CameraOffsetMax;
+	private float offset = 0; 
+	private float t_ = 0.0f;
 
 	// Use this for initialization
 	void Start () {
-		
+		StartCoroutine(LerpCameraOffset());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// align camera with attack ship position
-		float ship_camera_pos = ship_object_.transform.position.y + camera_offset_;
+		float ship_camera_pos = ShipObject.transform.position.y + offset;
 		if (transform.position.y != ship_camera_pos) {
-			transform.position = new Vector3(transform.position.x, ship_camera_pos, 0);
+			transform.position = new Vector3(transform.position.x, ship_camera_pos, transform.position.z);
 		}
+	}
+
+	IEnumerator LerpCameraOffset() {
+		while (offset < CameraOffsetMax) {
+			offset = Mathf.Lerp(0, CameraOffsetMax, t_);
+			t_ += 0.3f * Time.deltaTime;
+			yield return null;
+		}
+		offset = CameraOffsetMax;
 	}
 }

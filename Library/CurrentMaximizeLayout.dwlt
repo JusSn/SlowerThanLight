@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1975
     height: 1059
-  m_MinSize: {x: 713, y: 492}
-  m_MaxSize: {x: 18008, y: 14042}
+  m_MinSize: {x: 709, y: 471}
+  m_MaxSize: {x: 18004, y: 14021}
   vertical: 0
-  controlID: 2276
+  controlID: 3740
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,8 +157,8 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
+    m_SelectedIDs: 34c4ffff
+    m_LastClickedID: -15308
     m_ExpandedIDs: ccf9ffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -231,10 +231,10 @@ MonoBehaviour:
     y: 0
     width: 558
     height: 1059
-  m_MinSize: {x: 279, y: 192}
-  m_MaxSize: {x: 4004, y: 8042}
+  m_MinSize: {x: 279, y: 171}
+  m_MaxSize: {x: 4004, y: 8021}
   vertical: 1
-  controlID: 2255
+  controlID: 3719
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -339,10 +339,10 @@ MonoBehaviour:
     y: 0
     width: 1013
     height: 1059
-  m_MinSize: {x: 232, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+  m_MinSize: {x: 230, y: 471}
+  m_MaxSize: {x: 10000, y: 14021}
   vertical: 1
-  controlID: 2277
+  controlID: 3599
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -619,8 +619,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 34c4ffff
+    m_LastClickedInstanceID: -15308
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 3224000034240000462400003a2400003e2400004024000042240000442400004824000000000000ce2400009e240000a8240000b42400004c2400003c2500004e2400005a240000042500005024000066240000a2080000080800007c090000ba070000b6060000c0060000cc06000068240000742400006a24000076250000cc2500006a260000802400004eeeffff8225000044280000d62700006c29000098250000a02b0000aa2b000066250000aa270000c8270000762900008e290000942700006a280000b2290000362700002228000074fdf7ffe82a0000
     m_RenameOverlay:
