@@ -32,8 +32,8 @@ public class Ship : MonoBehaviour {
 		// Check for target in range
 		var scan_hit = Physics2D.Raycast(transform.position, Vector2.up, range, enemyMask);
 		if (scan_hit.collider != null) {
-			// var laserShot = Instantiate(laser, transform.position, Quaternion.identity);
-			// laserShot.transform.localScale = new Vector3(power, power, 1);
+			var laserShot = Instantiate(laser, transform.position, Quaternion.identity);
+			laserShot.transform.localScale *= power;
 			onCooldown = true;
 			currentCooldown_ = 0;
 		}

@@ -40,9 +40,9 @@ public class Explodable : MonoBehaviour {
 		if (health <= 0) { Explode(); }
 	}
 
-	virtual protected void Explode() {
+	public void Explode() {
 		var explosion_copy = Instantiate(explosion, transform.position, Quaternion.identity);
-		explosion_copy.transform.localScale = new Vector3(explosionScale, explosionScale, 1);
+		explosion_copy.transform.localScale *= explosionScale;
 		Destroy(this.gameObject);
 	}
 }

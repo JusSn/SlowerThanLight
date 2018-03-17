@@ -570,9 +570,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  range: 5
+  range: 7
   maxCooldown: 0.5
-  laser: {fileID: 0}
+  laser: {fileID: 1213814652987596, guid: bd82269181131164dba0ccc6eb1571be, type: 2}
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
@@ -706,9 +706,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  range: 5
+  range: 9
   maxCooldown: 0.5
-  laser: {fileID: 0}
+  laser: {fileID: 1213814652987596, guid: bd82269181131164dba0ccc6eb1571be, type: 2}
   enemyMask:
     serializedVersion: 2
     m_Bits: 4352
