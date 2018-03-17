@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114531382016669718}
   m_Layer: 9
   m_Name: blueLaser
-  m_TagString: Untagged
+  m_TagString: MISSILE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  maxRange: 8
+  maxRange: 9.5
 --- !u!212 &212810091556107524
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -15,7 +15,6 @@ public class MeteorSpawner : MonoBehaviour {
 		if (timeSinceLastSpawn_ > spawnRate) {
 			timeSinceLastSpawn_ = 0;
 			SpawnRandomMeteor();
-			
 		}
 	}
 

@@ -63,7 +63,7 @@ public class Ship : MonoBehaviour {
 		// Check for target in range
 		var scan_hit = Physics2D.Raycast(transform.position, Vector2.up, range, enemyMask);
 		if (scan_hit.collider != null) {
-			var laser_shot = Instantiate(laser, transform.position + Vector3.up * 0.1f, Quaternion.identity);
+			var laser_shot = Instantiate(laser, transform.position, Quaternion.identity);
 			laser_shot.GetComponent<Explodable>().damage = GetLaserDamage();
 			laser_shot.transform.localScale *= GetLaserDamage();
 			onCooldown_ = true;

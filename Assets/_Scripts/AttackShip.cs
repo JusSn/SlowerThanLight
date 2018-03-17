@@ -16,6 +16,10 @@ public class AttackShip : Ship {
 		StartCoroutine(Embark());
 	}
 
+	// Attack ship delays command by [level] seconds
+	override protected void AddCommand(State dest) {
+		StartCoroutine(DelayedCommand(dest));
+	}
 	// Attack ship alters exhaust size rather than turning it on/off
 	override protected void IncreaseThrust() { base.GetExhaustRenderer().transform.localScale *= kExhaustScale_; }
 	override protected void DecreaseThrust() { base.GetExhaustRenderer().transform.localScale /= kExhaustScale_;}
@@ -41,6 +45,12 @@ public class AttackShip : Ship {
 		// Enable controls and start level counter
 		SetState(State.CENTER);
 		Manager.instance.enabled = true;
+	}
+
+	// Execute command after level seconds
+	IEnumerator DelayedCommand(State dest) {
+		yield return new WaitForSecondsRealtime(Manager.instance.level * 0.5f);
+		base.AddCommand(dest);
 	}
 	
 	void UpdateYPosition(float y) {
