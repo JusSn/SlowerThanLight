@@ -15,10 +15,12 @@ public class AttackCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// align camera with attack ship position
-		float ship_camera_pos = ShipObject.transform.position.y + offset;
-		if (transform.position.y != ship_camera_pos) {
-			transform.position = new Vector3(transform.position.x, ship_camera_pos, transform.position.z);
+		if (ShipObject) {
+			// align camera with attack ship position
+			float ship_camera_pos = ShipObject.transform.position.y + offset;
+			if (transform.position.y != ship_camera_pos) {
+				transform.position = new Vector3(transform.position.x, ship_camera_pos, transform.position.z);
+			}
 		}
 	}
 

@@ -323,8 +323,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1045499827
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5c5d6f5b8c3806a42a4779aa80296cdf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 1391746362}
   - component: {fileID: 1391746364}
   - component: {fileID: 1391746365}
+  - component: {fileID: 1391746366}
   m_Layer: 10
   m_Name: DefenseShip
   m_TagString: SHIP
@@ -555,8 +556,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   damage: 999
-  explosion: {fileID: 0}
+  explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
   explosionScale: 1
+--- !u!114 &1391746366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1391746361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563bd11a59568fd4ca890dcef279a73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 1
+  range: 5
 --- !u!1 &1548198817
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +700,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57b4d704b573bc54aacc84e9d58dbfa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  power: 1
+  range: 5
   GameplayPosition: 10
 --- !u!114 &1548198823
 MonoBehaviour:
@@ -713,6 +729,7 @@ GameObject:
   - component: {fileID: 1754618929}
   - component: {fileID: 1754618928}
   - component: {fileID: 1754618931}
+  - component: {fileID: 1754618932}
   m_Layer: 12
   m_Name: AwayPlanet
   m_TagString: AWAY_PLANET
@@ -766,8 +783,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -192650837
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b9dd3c839ada5794e9f08201278d3303, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -807,6 +824,21 @@ MonoBehaviour:
   damage: 1
   explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
   explosionScale: 20
+--- !u!114 &1754618932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754618927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c331c9ad8d950a418287f58c15aba38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meteors:
+  - {fileID: 1528727818671764, guid: 27878d3140cf15b4194a5ae02fba822a, type: 2}
+  level: 0
+  spawnRate: 1
 --- !u!1 &2110856774
 GameObject:
   m_ObjectHideFlags: 0

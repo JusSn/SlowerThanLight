@@ -43,6 +43,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: HomePlanet
+    uniqueID: 3249467469
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: AwayPlanet
+    uniqueID: 4102316459
+    locked: 0
+  - name: Explosion
+    uniqueID: 3123999411
     locked: 0
