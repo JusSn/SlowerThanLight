@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 1235848527}
   - component: {fileID: 1235848526}
   - component: {fileID: 1235848525}
+  - component: {fileID: 1235848528}
   m_Layer: 11
   m_Name: HomePlanet
   m_TagString: HOME_PLANET
@@ -348,6 +349,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1235848528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1235848524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71bb540293ef22348b4041efb5d0f647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  damage: 999
+  explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
+  explosionScale: 20
 --- !u!1 &1353871451
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +461,7 @@ GameObject:
   - component: {fileID: 1391746363}
   - component: {fileID: 1391746362}
   - component: {fileID: 1391746364}
+  - component: {fileID: 1391746365}
   m_Layer: 10
   m_Name: DefenseShip
   m_TagString: SHIP
@@ -525,6 +542,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.41
+--- !u!114 &1391746365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1391746361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71bb540293ef22348b4041efb5d0f647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  damage: 999
+  explosion: {fileID: 0}
+  explosionScale: 1
 --- !u!1 &1548198817
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,8 +699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  damage: 3
+  damage: 999
   explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
+  explosionScale: 1
 --- !u!1 &1754618927
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +712,7 @@ GameObject:
   - component: {fileID: 1754618930}
   - component: {fileID: 1754618929}
   - component: {fileID: 1754618928}
+  - component: {fileID: 1754618931}
   m_Layer: 12
   m_Name: AwayPlanet
   m_TagString: AWAY_PLANET
@@ -758,6 +792,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1754618931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754618927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71bb540293ef22348b4041efb5d0f647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 1
+  explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
+  explosionScale: 20
 --- !u!1 &2110856774
 GameObject:
   m_ObjectHideFlags: 0

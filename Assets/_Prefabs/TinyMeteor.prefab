@@ -93,6 +93,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
+  explosionScale: 1
 --- !u!114 &114646224118487670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fc25ce8a1f1604a9766ad996c96671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
 --- !u!212 &212873729238877818
 SpriteRenderer:
   m_ObjectHideFlags: 1

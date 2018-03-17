@@ -7,6 +7,7 @@ public class Explodable : MonoBehaviour {
 	// Default damage dealt to objects that this collides with 
 	public int damage = 1;
 	public GameObject explosion;
+	public float explosionScale = 1;
 	// Use this for initialization
 	void Start () {}
 	
@@ -39,8 +40,9 @@ public class Explodable : MonoBehaviour {
 		if (health <= 0) { Explode(); }
 	}
 
-	void Explode() {
-		Instantiate(explosion, transform.position, Quaternion.identity);
+	virtual protected void Explode() {
+		var explosion_copy = Instantiate(explosion, transform.position, Quaternion.identity);
+		explosion_copy.transform.localScale = new Vector3(explosionScale, explosionScale, 1);
 		Destroy(this.gameObject);
 	}
 }
