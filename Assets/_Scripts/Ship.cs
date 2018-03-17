@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ship : MonoBehaviour {
-	// ships fire on enemies in their lane
+	/* MOTION */
+	protected enum State { LEFT, CENTER, RIGHT, MOVING }
+	private State state_;
+	private State destination_;
+	public KeyCode LeftKey;
+	public KeyCode RightKey;
+	
+	/* FIRING */
 	public int power;
 	public int range;
 	public float maxCooldown;
-	private float currentCooldown_ = 0;
 	public GameObject laser;
-	private SpriteRenderer exhaust_;
-	
 	public LayerMask enemyMask;
 	private bool onCooldown = false;
+	private float currentCooldown_ = 0;
+	/* EFFECTS */
+	private SpriteRenderer exhaust_;
 
 	// Use this for initialization
 	virtual protected void Start () {
@@ -22,6 +29,24 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// TODO: Input L/R checking 
+		/* Movement state machine */
+		switch (state_) {
+			case State.LEFT:
+				if (Input.GetKeyDown(RightKey)) { Move(State.CENTER); }
+				break;
+			case State.CENTER:
+				if (Input.GetKeyDown(RightKey)) { }
+			break;
+			case State.RIGHT:
+			break;
+			case State.MOVING:
+			break;
+			default:
+			break;
+		}
+
+		/* Firing code */
 		if (onCooldown) {
 			currentCooldown_ += Time.deltaTime;
 			if (currentCooldown_ >= maxCooldown) {
@@ -39,8 +64,21 @@ public class Ship : MonoBehaviour {
 		}
 	}
 
+	// Turns on engine
 	protected void EngineOn() {
 		if (!exhaust_) { exhaust_ = transform.Find("ExhaustSprite").GetComponent<SpriteRenderer>(); }
 		exhaust_.enabled = true;
 	}
+
+	// Move ship to target state. AttackShip overrides this to implement delay and queue
+	virtual protected void Move(State destination) {
+
+	}
+
+	// Fat interface for input behavior when state is MOVING
+	virtual protected void CommandWhileMoving() {}
+
+	// Protected accessors
+	protected State GetState() { return state_; }
+	protected State GetDest() { return destination_; }
 }
