@@ -22,6 +22,7 @@ public class AttackShip : Ship {
 	// Attack ship laser increases damage with level
 	override protected int GetLaserDamage() { return Manager.instance.level + 1; }
 	
+	/* COROUTINES */
 	// Move AttackShip to gameplay position
 	IEnumerator Embark() {
 		// Prevent input

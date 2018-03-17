@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114866394348232680}
   - component: {fileID: 114560205158427612}
   - component: {fileID: 50816859792748892}
+  - component: {fileID: 114244050391081280}
   m_Layer: 8
   m_Name: BigMeteor
   m_TagString: METEOR
@@ -79,6 +80,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.05}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &114244050391081280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392774278191030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dd9a79f5725bd45ad162ef3867f463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 20
+  minSpeed: -20
 --- !u!114 &114560205158427612
 MonoBehaviour:
   m_ObjectHideFlags: 1

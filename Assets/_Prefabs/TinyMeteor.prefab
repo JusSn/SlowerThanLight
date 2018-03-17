@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114646224118487670}
   - component: {fileID: 114274802139603664}
   - component: {fileID: 50543798680298610}
+  - component: {fileID: 114044295366180060}
   m_Layer: 8
   m_Name: TinyMeteor
   m_TagString: METEOR
@@ -79,6 +80,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.07
+--- !u!114 &114044295366180060
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528727818671764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dd9a79f5725bd45ad162ef3867f463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 20
+  minSpeed: -20
 --- !u!114 &114274802139603664
 MonoBehaviour:
   m_ObjectHideFlags: 1

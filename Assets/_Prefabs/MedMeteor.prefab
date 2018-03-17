@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114438430340644468}
   - component: {fileID: 114684165974681530}
   - component: {fileID: 50409724888774910}
+  - component: {fileID: 114786455200194456}
   m_Layer: 8
   m_Name: MedMeteor
   m_TagString: METEOR
@@ -106,6 +107,19 @@ MonoBehaviour:
   damage: 1
   explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
   explosionScale: 1.6
+--- !u!114 &114786455200194456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054332208193360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dd9a79f5725bd45ad162ef3867f463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 20
+  minSpeed: -20
 --- !u!212 &212840526314759144
 SpriteRenderer:
   m_ObjectHideFlags: 1

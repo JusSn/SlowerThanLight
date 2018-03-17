@@ -5,9 +5,15 @@ using UnityEngine;
 public class Ship : MonoBehaviour {
 	/* MOTION */
 	protected enum State { LEFT, CENTER, RIGHT, MOVING }
+	[SerializeField]
 	private State state_ = State.CENTER;
-	private State destination_;
+	[SerializeField]
+	private State destState_;
+	private Vector3 destPos_;
+	private Vector3 origPos_;
+	private float t = 0;
 	public KeyCode LeftKey;
+	public KeyCode CenterKey;
 	public KeyCode RightKey;
 	
 	/* FIRING */
@@ -30,34 +36,20 @@ public class Ship : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		/* Movement state machine */
-		switch (state_) {
-			case State.LEFT:
-				if (Input.GetKeyDown(RightKey)) { 
-					destination_ = State.CENTER;
-					Move(Manager.kCenterLaneX); 
-				}
-				break;
-			case State.CENTER:
-				if (Input.GetKeyDown(RightKey)) { 
-					destination_ = State.RIGHT;
-					Move(Manager.kRightLaneX); 
-				}
-				if (Input.GetKeyDown(LeftKey)) { 
-					destination_ = State.LEFT;
-					Move(Manager.kLeftLaneX); 
-				}
-				break;
-			case State.RIGHT:
-				if (Input.GetKeyDown(LeftKey)) { 
-					destination_ = State.CENTER;
-					Move(Manager.kCenterLaneX); 
-				}
-				break;
-			case State.MOVING:
-				CommandWhileMoving();
-				break;
-			default:
-				break;
+		if (Input.GetKeyDown(LeftKey)) { AddCommand(State.LEFT); }
+		if (Input.GetKeyDown(CenterKey)) { AddCommand(State.CENTER); }
+		if (Input.GetKeyDown(RightKey)) { AddCommand(State.RIGHT); }
+
+		if (state_ == State.MOVING) {
+			if (transform.position != destPos_) {
+				transform.position = Vector3.Lerp(origPos_, destPos_, t);
+				t += 2 * Time.deltaTime;
+			}
+			else {
+				// Done moving
+				state_ = destState_;
+				DecreaseThrust();
+			}
 		}
 
 		/* Firing code */
@@ -71,7 +63,7 @@ public class Ship : MonoBehaviour {
 		// Check for target in range
 		var scan_hit = Physics2D.Raycast(transform.position, Vector2.up, range, enemyMask);
 		if (scan_hit.collider != null) {
-			var laser_shot = Instantiate(laser, transform.position, Quaternion.identity);
+			var laser_shot = Instantiate(laser, transform.position + Vector3.up * 0.1f, Quaternion.identity);
 			laser_shot.GetComponent<Explodable>().damage = GetLaserDamage();
 			laser_shot.transform.localScale *= GetLaserDamage();
 			onCooldown_ = true;
@@ -87,14 +79,36 @@ public class Ship : MonoBehaviour {
 	void EngineOff() { exhaust_.enabled = false; }
 
 	// Move ship to target lane denoted by lane_x. AttackShip overrides this to implement delay and queue
-	virtual protected void Move(float lane_x) {
-		state_ = State.MOVING;
-		IncreaseThrust();
-		StartCoroutine(MoveAnimation(new Vector3(lane_x, transform.position.y, transform.position.z)));
+	virtual protected void Move(State next_dest) {
+		if (state_ != State.MOVING) { 
+			IncreaseThrust(); 
+			state_ = State.MOVING;
+		}
+
+		float lane_x = 0;
+		switch (next_dest) {
+			case State.LEFT:
+				lane_x = Manager.kLeftLaneX;
+				break;
+			case State.CENTER:
+				lane_x = Manager.kCenterLaneX;
+				break;
+			case State.RIGHT:
+				lane_x = Manager.kRightLaneX;
+				break;
+		}
+		// Reset lerp function
+		t = 0;
+		origPos_ = transform.position;
+		destState_ = next_dest;
+		destPos_ = new Vector3(lane_x, transform.position.y, transform.position.z);
 	}
 
-	// Fat interface for input behavior when state is MOVING
-	virtual protected void CommandWhileMoving() {}
+	// Add a command to the queue, taking final destination of the current queue into account
+	// Base ship just executes the command immediately
+	virtual protected void AddCommand(State dest) {
+		if (dest != destState_) { Move(dest); }
+	}
 	// Turn up thrust when moving
 	virtual protected void IncreaseThrust() { EngineOn(); }
 	// Turn down thrust when stopped
@@ -105,20 +119,6 @@ public class Ship : MonoBehaviour {
 	// Protected accessors
 	protected State GetState() { return state_; }
 	protected void SetState(State s) { state_ = s; }
-	protected State GetDest() { return destination_; }
+	protected Vector3 GetDest() { return destPos_; }
 	protected SpriteRenderer GetExhaustRenderer() { return exhaust_; }
-
-	// Coroutines
-	IEnumerator MoveAnimation(Vector3 dest_vector) {
-		var orig_pos = transform.position;
-		float t = 0.0f;
-		while (transform.position != dest_vector) {
-			transform.position = Vector3.Lerp(orig_pos, dest_vector, t);
-			t += 2 * Time.deltaTime;
-			yield return null;
-		}
-		// Done moving
-		state_ = destination_;
-		DecreaseThrust();
-	}
 }
