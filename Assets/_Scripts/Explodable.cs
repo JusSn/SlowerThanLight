@@ -44,5 +44,7 @@ public class Explodable : MonoBehaviour {
 		var explosion_copy = Instantiate(explosion, transform.position, Quaternion.identity);
 		explosion_copy.transform.localScale *= explosionScale;
 		Destroy(this.gameObject);
+
+		// TODO: End game if either planet died
 	}
 }
