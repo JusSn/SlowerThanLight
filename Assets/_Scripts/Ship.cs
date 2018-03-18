@@ -119,5 +119,6 @@ public class Ship : MonoBehaviour {
 
 	// Protected accessors
 	protected void SetState(State s) { state_ = s; }
+	protected State GetState() { return state_; }
 	protected SpriteRenderer GetExhaustRenderer() { return exhaust_; }
 }

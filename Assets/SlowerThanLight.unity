@@ -677,6 +677,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4352
   gameplayPosition: 10
+  bossFightPosition: 14
 --- !u!114 &1548198823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bb540293ef22348b4041efb5d0f647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 999
   damage: 999
   explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
   explosionScale: 1
@@ -790,6 +791,7 @@ GameObject:
   - component: {fileID: 1754618928}
   - component: {fileID: 1754618931}
   - component: {fileID: 1754618932}
+  - component: {fileID: 1754618929}
   m_Layer: 12
   m_Name: AwayPlanet
   m_TagString: AWAY_PLANET
@@ -812,6 +814,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 6.9}
   serializedVersion: 2
   m_Radius: 4.0824604
+--- !u!50 &1754618929
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754618927}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
 --- !u!4 &1754618930
 Transform:
   m_ObjectHideFlags: 0
@@ -1039,3 +1061,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  kTimeBetweenLevels: 1
+  spawner: {fileID: 1754618932}
+  ship: {fileID: 1548198822}
