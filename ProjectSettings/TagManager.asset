@@ -9,6 +9,7 @@ TagManager:
   - AWAY_PLANET
   - METEOR
   - SHIP
+  - TIME_BARRIER
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - ship
   - home_planet
   - away_planet
-  - 
+  - time_barrier
   - 
   - 
   - 

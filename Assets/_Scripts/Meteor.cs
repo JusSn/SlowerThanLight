@@ -15,6 +15,15 @@ public class Meteor : MonoBehaviour {
 		// Move towards home planet
 		transform.position = 
 			new Vector3(transform.position.x, transform.position.y - nextY_, transform.position.z);
-		// TODO: trigger pause for (level) seconds when entering waiting area
+	}
+
+	public void Freeze() { StartCoroutine(FreezeMotion()); }
+
+	IEnumerator FreezeMotion() {
+		var old_speed = speed;
+		speed = 0;
+		// Delay rocks by [level] seconds
+		yield return new WaitForSecondsRealtime(Manager.instance.level);
+		speed = old_speed - 0.5f;
 	}
 }

@@ -407,6 +407,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1359129342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1359129343}
+  - component: {fileID: 1359129345}
+  - component: {fileID: 1359129344}
+  m_Layer: 13
+  m_Name: TimeBarrier
+  m_TagString: TIME_BARRIER
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1359129343
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1359129342}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1359129344
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1359129342}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1359129345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1359129342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd9fa34924cc9240b8f737e914f36db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1391746361
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bb540293ef22348b4041efb5d0f647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 999
+  health: 3
   damage: 999
   explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
   explosionScale: 1
@@ -859,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bb540293ef22348b4041efb5d0f647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   damage: 1
   explosion: {fileID: 1688706367203824, guid: 6b39b92f8f0b5944280ad143e4bbeaa0, type: 2}
   explosionScale: 20
@@ -1061,6 +1127,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  kTimeBetweenLevels: 1
   spawner: {fileID: 1754618932}
   ship: {fileID: 1548198822}

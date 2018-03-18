@@ -12,7 +12,6 @@ public class Manager : MonoBehaviour {
 	static public Manager instance;
 	// current game level dictates meteor spawn types and attack ship power
 	public int level = 0;
-	[SerializeField]
 	private float kTimeBetweenLevels = 15;
 	public MeteorSpawner spawner;
 	public AttackShip ship;

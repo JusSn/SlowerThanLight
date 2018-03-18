@@ -61,6 +61,7 @@
      <Compile Include="Assets\_Scripts\MeteorSpawner.cs" />
      <Compile Include="Assets\_Scripts\Ship.cs" />
      <Compile Include="Assets\_Scripts\SpriteRotator.cs" />
+     <Compile Include="Assets\_Scripts\TimeBarrier.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
